@@ -21,6 +21,14 @@ router.post('/create', (req, res) => {
     })
 })
 
+//  delete question route
+router.delete('/delete/:id', (req, res) => {
+    questionModel.deleteOne({_id: req.params.id})
+    .then((result) => {
+        res.status(200).send(result);
+    })
+})
+
 
 
 module.exports = router;
