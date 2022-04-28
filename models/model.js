@@ -16,7 +16,7 @@ db.on("error", function(){
 const questionSchema = new mongoose.Schema({
     title: {type: String, required: true},
     answers: [
-        {choice: {type: String, required: true}, corrected:{type: Boolean, default: false}}
+        {choice: {type: String, required: true}, corrected:{type: Boolean}}
     ],  
 })
 
