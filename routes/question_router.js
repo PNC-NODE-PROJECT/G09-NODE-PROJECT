@@ -30,5 +30,12 @@ router.delete('/delete/:id', (req, res) => {
 })
 
 
+//  update question route
+router.put('/update/:id', (req, res) => {
+    questionModel.updateOne({_id: req.params.id}, {title: req.body.title, answers: req.body.answers})
+    .then((result) => {
+        res.status(200).send(result);
+    })
+})
 
 module.exports = router;
