@@ -85,22 +85,20 @@ function renderQuestions(questions) {
     questionInfos.appendChild(title);
 
 
-
-      let card_ans = document.createElement('div');
-      card_ans.className=card_ans;
-      questionInfos.appendChild(card_ans);
-      let allAnswer = question.answers;
-      for(let answer of allAnswer){
-        let ans=document.createElement('span');
-        ans.className="ans"
-        ans.textContent = answer.choice;
-        card_ans.appendChild(ans);
-        if(answer.corrected){
-          ans.style.backgroundColor="green";
-
-        }
-
+    // check to display good answer
+    let card_ans = document.createElement('div');
+    card_ans.className=card_ans;
+    questionInfos.appendChild(card_ans);
+    let allAnswer = question.answers;
+    for(let answer of allAnswer){
+      let ans=document.createElement('span');
+      ans.className="ans"
+      ans.textContent = answer.choice;
+      card_ans.appendChild(ans);
+      if(answer.corrected){
+        ans.style.backgroundColor="green";
       }
+    }
 
     // Create spams for title and author
     let actions = document.createElement("div");
