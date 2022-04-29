@@ -117,7 +117,7 @@ function showScore() {
       if (scorePerCent < 50) {
         image += "20.png";
       } else if (scorePerCent > 50) {
-        image += "1001.png";
+        image += "80.png";
       } 
   
       dom_score_p.textContent = scorePerCent + " %";
