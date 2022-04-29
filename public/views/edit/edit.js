@@ -112,7 +112,7 @@ function renderQuestions(questions) {
     let trashAction = document.createElement("img");
     trashAction.className = 'delete';
     trashAction.src = "../../img/trash.png";
-    // trashAction.addEventListener("click", romoveEditQuestion);
+    trashAction.addEventListener("click", romoveQuestion);
     actions.appendChild(trashAction);
 
     let i = document.createElement("i");
@@ -123,6 +123,21 @@ function renderQuestions(questions) {
     editAction.appendChild(i);
   }
   
+}
+
+function romoveQuestion(e) {
+  e.preventDefault();
+  if (e.target.className === "delete") {
+    let isExecuted = confirm("Are you sure to delete this task?");
+    if (isExecuted) {
+      // TODO: Request to the server to detele one question
+      let id = e.target.parentElement.parentElement.id;
+      
+      let URL = "http://localhost:80/quiz/delete/"+id;
+      axios.delete(URL).then(displayQuestion());
+    }
+  } 
+  displayQuestion();
 }
 
 // change header modal create question
