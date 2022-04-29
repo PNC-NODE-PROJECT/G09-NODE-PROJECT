@@ -29,13 +29,98 @@ function addQuestion() {
       console.log(body);
       axios.post(URL, body).then((req, res) => {
       
-      
+        displayQuestion();
         clearForm();
       })}else{
         alert("Correct answer should be choose.")
       }
   }else{
     alert("The field should not be empty")
+  }
+  
+}
+
+function displayQuestion() {
+  // TODO: request tasks from server and update DOM
+  let URL = "http://localhost:80/quiz/questions";
+  
+    axios.get(URL).then((results) => {
+   
+      renderQuestions(results.data);
+     
+  
+    })
+  
+}
+
+function renderQuestions(questions) {
+  while (dom_questions_container.firstChild) {
+    dom_questions_container.removeChild(dom_questions_container.lastChild);
+  }
+
+
+  // 2 - For all questions,  create a new div (class : item), and append it the container
+  for (let index = 0; index < questions.length; index++) {
+    let question = questions[index];
+
+    let card = document.createElement("div");
+    card.className = "cards";
+    card.id = question._id;
+   
+    dom_questions_container.appendChild(card);
+
+    let questionInfos = document.createElement("div");
+    questionInfos.className = "question-info";
+    questionInfos.id = question._id;
+    card.appendChild(questionInfos);
+
+    let title = document.createElement("p");
+    title.className = "title";
+    title.textContent = question.title;
+    questionInfos.appendChild(title);
+
+
+
+      let card_ans = document.createElement('div');
+      card_ans.className=card_ans;
+      questionInfos.appendChild(card_ans);
+      let allAnswer = question.answers;
+      for(let answer of allAnswer){
+        let ans=document.createElement('span');
+        ans.className="ans"
+        ans.textContent = answer.choice;
+        card_ans.appendChild(ans);
+        if(answer.corrected){
+          ans.style.backgroundColor="green";
+
+        }
+
+      }
+
+    // Create spams for title and author
+    let actions = document.createElement("div");
+    actions.className = "actions";
+    actions.id = question._id;
+    card.appendChild(actions);
+
+    let editAction = document.createElement("button");
+    // editAction.addEventListener("click", isClickEdit);
+    editAction.className = "update";
+    editAction.id=question._id;
+    actions.appendChild(editAction);
+
+    let trashAction = document.createElement("img");
+    trashAction.className = 'delete';
+    trashAction.src = "../../img/trash.png";
+    // trashAction.addEventListener("click", romoveEditQuestion);
+    actions.appendChild(trashAction);
+
+    let i = document.createElement("i");
+    i.className = "fa fa-edit";
+    i.id = question._id;
+    i.setAttribute("data-target","#myModal");
+    i.setAttribute("data-toggle","modal");
+    editAction.appendChild(i);
   }
   
 }
@@ -64,7 +149,7 @@ function clearForm(){
 
 }
 // MAIN  ---------------------------------------------------------
-
+const dom_questions_container = document.querySelector("#questions-container");
 const modal_title = document.querySelector(".modal-title");
 const modal_header = document.querySelector('.modal-header');
 const title = document.querySelector("#title");
@@ -79,5 +164,5 @@ const correctAns = document.querySelectorAll('#check');
 const btn_add = document.querySelector('#btn-add');
 
 
-
+displayQuestion();
 
