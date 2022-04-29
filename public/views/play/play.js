@@ -100,3 +100,28 @@ function checkAnswer(choice) {
   })
   
 }
+
+// Compute score
+function showScore() {
+    hide(dom_quiz);
+    show(dom_score);
+    // dom_score_p.textContent = score;
+    let URL = "http://localhost:80/quiz/questions";
+    axios.get(URL).then((results) => {
+    // // calculate the amount of question percent answered by the user
+      let questions = results.data;
+      const scorePerCent = Math.round((100 * score) / questions.length);
+      // // choose the image based on the scorePerCent
+      let image = "../../img/";
+      let comment;
+      if (scorePerCent < 50) {
+        image += "20.png";
+      } else if (scorePerCent > 50) {
+        image += "1001.png";
+      } 
+  
+      dom_score_p.textContent = scorePerCent + " %";
+      dom_score_img.src = image;
+      console.log(dom_score_img);
+    });
+  }
