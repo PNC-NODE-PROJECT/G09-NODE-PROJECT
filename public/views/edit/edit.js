@@ -1,3 +1,5 @@
+let questionToEdit = null;
+
 // HIDE / SHOW ---------------------------------------------------------
 function hide(element) {
   element.style.display = "none";
@@ -7,6 +9,7 @@ function show(element) {
   element.style.display = "block";
 }
 
+// Add question to mongodb ---------------------------------------------
 function addQuestion() {
   if (title.value !== "" && choiceA.value !== "" && choiceB.value !== "" && choiceC.value !== "" && choiceD.value !== ""){
     let inputTitle = title.value;
@@ -40,8 +43,9 @@ function addQuestion() {
   
 }
 
+// Get all qestion from mongodb and display -----------------------------
 function displayQuestion() {
-  // TODO: request tasks from server and update DOM
+  
   let URL = "http://localhost:80/quiz/questions";
   
     axios.get(URL).then((results) => {
@@ -53,6 +57,7 @@ function displayQuestion() {
   
 }
 
+// Create Element and Refresh Dom ---------------------------------------
 function renderQuestions(questions) {
   while (dom_questions_container.firstChild) {
     dom_questions_container.removeChild(dom_questions_container.lastChild);
@@ -104,7 +109,7 @@ function renderQuestions(questions) {
     card.appendChild(actions);
 
     let editAction = document.createElement("button");
-    // editAction.addEventListener("click", isClickEdit);
+    editAction.addEventListener("click", isClickEdit);
     editAction.className = "update";
     editAction.id=question._id;
     actions.appendChild(editAction);
@@ -125,6 +130,7 @@ function renderQuestions(questions) {
   
 }
 
+// Remove specific id ---------------------------------------------------
 function romoveQuestion(e) {
   e.preventDefault();
   if (e.target.className === "delete") {
@@ -140,12 +146,79 @@ function romoveQuestion(e) {
   displayQuestion();
 }
 
-// change header modal create question
+// change modal header,color and clear Form -----------------------------
 function isClickAdd(){
   questionToEdit = null;
   modal_title.textContent = "Create new question";
   modal_header.style.backgroundColor="#fff9c4";
   clearForm();
+}
+
+function isClickEdit(event){
+  questionToEdit = event.target.parentElement.id ;
+  // change header modal edite question
+  modal_title.textContent = "Edit question";
+  modal_header.style.backgroundColor="#ffab91";
+  let URL = "http://localhost:80/quiz/questions";
+  if (questionToEdit !== null){
+    axios.get(URL).then((results) => {
+      let questions = results.data;
+      for ( let question of questions){
+        if (questionToEdit == question._id){
+          document.querySelector("#title").value = question.title;
+          for (let i=0;i<allChoice.length;i++){
+            allChoice[i].value = question.answers[i].choice;
+          }
+          for (let i=0; i<correctAns.length;i++){
+            if (question.answers[i].corrected == true){
+              correctAns[i].checked = true;
+            }
+          }
+        }
+      }
+    })
+  }
+}
+
+function editQuestion(e){
+  e.preventDefault();
+    // check form empty or not
+    if (title.value !== "" && choiceA.value !== "" && choiceB.value !== "" && choiceC.value !== "" && choiceD.value !== ""){
+      // console.log('hi2');
+      let inputTitle = title.value;
+      let answer = [{choice:choiceA.value,corrected:false},{choice:choiceB.value,corrected:false},{choice:choiceC.value,corrected:false},{choice:choiceD.value,corrected:false}];
+      let check = false;
+      for( let i=0; i<correctAns.length; i++){
+        if(correctAns[i].checked){
+          answer[i].corrected = true;
+          check = true;
+        }
+      }
+      if(check){
+        
+        let body = {title: inputTitle, answers:answer };
+        // Request to the server to update one question
+        let id = questionToEdit;
+        let URL = "http://localhost:80/quiz/update/" + id;
+        axios.put(URL,body).then((req, res) => {
+          displayQuestion();
+  
+        })}else{
+          alert("Correct answer should be choose.")
+        }
+    }else{
+      alert("The field should not be empty")
+    }
+  
+}
+
+function submit(e) {
+  if(questionToEdit == null){
+    addQuestion()
+  }else{
+    editQuestion(e);
+
+  }
 }
 
 function clearForm(){
@@ -165,6 +238,8 @@ function clearForm(){
 }
 // MAIN  ---------------------------------------------------------
 const dom_questions_container = document.querySelector("#questions-container");
+
+const dom_questions_view = document.getElementById("questions-view");
 const modal_title = document.querySelector(".modal-title");
 const modal_header = document.querySelector('.modal-header');
 const title = document.querySelector("#title");
@@ -173,11 +248,9 @@ const choiceB = document.querySelector("#choiceB");
 const choiceC = document.querySelector("#choiceC");
 const choiceD = document.querySelector("#choiceD");
 const correctAns = document.querySelectorAll('#check');
-
-
-
+const sumit = document.querySelector("#sumit");
+const allChoice = document.getElementsByName("choice");
 const btn_add = document.querySelector('#btn-add');
-
+sumit.addEventListener('click', submit);
 
 displayQuestion();
-
