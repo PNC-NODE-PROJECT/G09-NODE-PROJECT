@@ -1,14 +1,5 @@
 let questionToEdit = null;
 
-// HIDE / SHOW ---------------------------------------------------------
-function hide(element) {
-  element.style.display = "none";
-}
-
-function show(element) {
-  element.style.display = "block";
-}
-
 // Add question to mongodb ---------------------------------------------
 function addQuestion() {
   
@@ -377,23 +368,23 @@ const dom_questions_container = document.querySelector("#questions-container");
 const dom_questions_view = document.getElementById("questions-view");
 const modal_title = document.querySelector(".modal-title");
 const modal_header = document.querySelector('.modal-header');
+
 const input0 = document.querySelector('#input0');
 const input1 = document.querySelector('#input1');
 const input2 = document.querySelector('#input2');
 const input3 = document.querySelector('#input3');
 const input4 = document.querySelector('#input4');
+
 const title = document.querySelector("#title");
 const choiceA = document.querySelector("#choiceA");
 const choiceB = document.querySelector("#choiceB");
 const choiceC = document.querySelector("#choiceC");
 const choiceD = document.querySelector("#choiceD");
 const correctAns = document.querySelectorAll('#check');
+
 const submitForm = document.querySelector("#submit");
 const allChoice = document.getElementsByName("choice");
 const btn_add = document.querySelector('#btn-add');
-submitForm.addEventListener('click', submit);
-
-
 
 const questionError = document.getElementById('question-error');
 const answer1Error = document.getElementById('answer1-error');
@@ -402,5 +393,6 @@ const answer3Error = document.getElementById('answer3-error');
 const answer4Error = document.getElementById('answer4-error');
 const submitError = document.getElementById('submit-error');
 
+submitForm.addEventListener('click', submit);
 
 displayQuestion();
