@@ -1,13 +1,14 @@
+import {hide,show} from "../../Utils/visible.js"
 let questionToEdit = null;
 
 // HIDE / SHOW ---------------------------------------------------------
-function hide(element) {
-  element.style.display = "none";
-}
+// function hide(element) {
+//   element.style.display = "none";
+// }
 
-function show(element) {
-  element.style.display = "block";
-}
+// function show(element) {
+//   element.style.display = "block";
+// }
 
 // Add question to mongodb ---------------------------------------------
 function addQuestion() {
@@ -121,6 +122,7 @@ function renderQuestions(questions) {
     let i = document.createElement("i");
     i.className = "fa fa-edit";
     i.id = question._id;
+    // i.style.color = "#1e88e5";
     i.setAttribute("data-target","#myModal");
     i.setAttribute("data-toggle","modal");
     editAction.appendChild(i);

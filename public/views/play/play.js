@@ -1,3 +1,4 @@
+import {hide,show} from "../../Utils/visible.js"
 // DOMS ELEMENTS  ---------------------------------------------------------
 const dom_start = document.getElementById("start");
 const dom_quiz = document.getElementById("quiz");
@@ -15,16 +16,16 @@ let score = 0;
 let currentQuestionIndex = 0;
 let percent = 0;
 
-// Hide a given element
-function hide(element) {
-  element.style.display = "none";
-}
+// // Hide a given element
+// function hide(element) {
+//   element.style.display = "none";
+// }
 
 
-// Show a given element
-function show(element) {
-  element.style.display = "block";
-}
+// // Show a given element
+// function show(element) {
+//   element.style.display = "block";
+// }
 
 
 function renderQuestion() {
@@ -36,7 +37,7 @@ function renderQuestion() {
     let questions = results.data;
     let question = questions[currentQuestionIndex];
     let answers = question.answers;
-    let dom_question = document.createElement("div");
+    let dom_question = document.createElement("h2");
     dom_question.id = "question";
     dom_question.textContent = question.title;
     dom_quiz.appendChild(dom_question);
@@ -116,7 +117,7 @@ function showScore() {
       let comment;
       if (scorePerCent < 50) {
         image += "20.png";
-      } else if (scorePerCent > 50) {
+      } else if (scorePerCent >= 50) {
         image += "80.png";
       } 
   

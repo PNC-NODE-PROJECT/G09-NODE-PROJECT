@@ -26,7 +26,6 @@ button {
   cursor: pointer;
 }
 
-button:hover,
 button:active {
   background-color: #e6e6e6;
 
@@ -85,10 +84,21 @@ button:active {
 }
 
 #score {
+  background: #eee;
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
   display: flex;
-  justify-content: center;
+  justify-content: space-around;
   align-items: center;
- 
+  border-radius: 5px;
+  width: 25%;
+  height: 20vh;
+  padding: 2rem 1rem;
+}
+#scor-container{
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  text-align: center;
 }
 
 #question {
@@ -299,7 +309,6 @@ nav img {
   height: 37px;
   cursor: pointer;
 }
-
 ul {
   display: flex;
   margin-top: 1%;
@@ -326,6 +335,7 @@ ul li:hover {
 .active {
   background-color: var(--main-color);
   color: white;
+  border-radius: 5px;
 }
 
 ul h2 {
