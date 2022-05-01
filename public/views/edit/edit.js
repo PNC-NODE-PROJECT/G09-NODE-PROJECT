@@ -117,6 +117,7 @@ function validationForm(){
 
     if(qestion.length == 0 ){
         questionError.textContent = 'Question is required'
+        questionError.style.color = "#f44336";
         input0.style.border = "1px solid #f44336"
     }else{
       questionError.textContent = 'valid'
@@ -126,6 +127,7 @@ function validationForm(){
     }
     if(answer1.length == 0){
       answer1Error.textContent = 'Answer1 is required'
+      answer1Error.style.color = "#f44336";
       input1.style.border = "1px solid #f44336"
     }else{
       answer1Error.textContent = 'valid'
@@ -135,6 +137,7 @@ function validationForm(){
     }
     if(answer2.length == 0){
       answer2Error.textContent = 'Answer2 is required'
+      answer2Error.style.color = "#f44336";
       input2.style.border = "1px solid #f44336"
     }else{
       answer2Error.textContent = 'valid'
@@ -144,6 +147,7 @@ function validationForm(){
     }
     if(answer3.length == 0){
       answer3Error.textContent = 'Answer3 is required'
+      answer3Error.style.color = "#f44336";
       input3.style.border = "1px solid #f44336"
     }
     else{
@@ -154,6 +158,7 @@ function validationForm(){
     }
     if(answer4.length == 0){
       answer4Error.textContent = 'Answer4 is required'
+      answer4Error.style.color = "#f44336";
       input4.style.border = "1px solid #f44336"
     }else{
       answer4Error.textContent = 'valid'

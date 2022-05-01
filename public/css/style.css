@@ -1,3 +1,6 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Dongle&display=swap');
+
 :root {
   --main-color: #616061;
   --main-color-light: rgb(134, 134, 134);
@@ -12,7 +15,7 @@ body {
   font-size: 15px;
   font-family: sans-serif;
   box-sizing: border-box;
-  background-color: var(--main-color);
+  background-color: var(--white-color);
 }
 
 
@@ -28,23 +31,10 @@ button {
 
 button:hover,
 button:active {
-  background-color: #e6e6e6;
+  background-color: #f51313;
 
 }
 
-.button {
-  display: inline-block;
-  text-align: center;
-  background-color: white;
-  border: 1px solid grey;
-  border-radius: 5px;
-  cursor: pointer;
-  padding: 10px;
-}
-.button:hover {
-  border: 1px solid rgb(15, 15, 15);
-  background-color: rgb(233, 233, 233);
-}
 
 /* --------------- WELCOME VIEW    --------------------- ---------------   */
 
@@ -58,7 +48,7 @@ button:active {
 /* --------------- PLAY VIEW    --------------------- ---------------   */
 
 #play-view {
-  background-color: var(--main-color-light);
+  background-color: var(--white-color);
 
   display: flex;
   justify-content: center;
@@ -68,24 +58,28 @@ button:active {
 }
 
 #start {
-  background-color: rgb(0, 0, 0);
+  background-color: #9fa8da;
+  box-shadow: 9px 9px 9px 9px rgba(0,0,0,.2);
+  font-family: 'Dongle', sans-serif;
   border-radius: 10px;
-  padding: 20px;
-  font-size: 300%;
+  padding: 20px 50PX;
+  font-size: 500%;
+  font-weight: bold;
   cursor: pointer;
-  color: wheat;
+  color: rgb(0, 0, 0);
 }
 
 #quiz {
   width: 50%;
   max-width: 80%;
-  background-color: white;
+  background-color: rgb(178, 199, 243);
+  border-top: 5px solid rgb(108, 108, 241);
   border-radius: 10px;
   padding: 10px;
 }
 
 #score {
-  background: #eee;
+  background: rgb(178, 199, 243);
   box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
   display: flex;
   justify-content: space-around;
@@ -119,14 +113,19 @@ button:active {
 
 }
 #choices button{
-  border: 1px solid;
-  background-color: black;
+  border: none;
+  /* margin: 10px 10px; */
+  padding:  10px;
+  background-color: #1976d2;
   color: white;
+  border-radius: 5px;
+  width: 150px;
 }
 
 /* --------------- EDIT VIEW STYLE   ---------------   */
 #questions-view {
-  background-color: var(--main-color);
+  background-color: var(--white-color);
+  
  
   padding: 2rem;
   width: 100vw;
@@ -152,10 +151,9 @@ button:active {
   width: 98%;
   margin: 10px 0;
   padding: 10px;
- 
-
-  border: 1px solid var(--main-color-light);
-  background-color: white;
+  border-top: 5px solid rgb(108, 108, 241);
+  background-color: rgb(178, 199, 243);
+  box-shadow: 0 5px 5px 0 rgba(0,0,0,.4);
   border-radius: 5px;
 }
 .title{
@@ -195,11 +193,15 @@ button:active {
   width: 35px;
 }
 .actions button{
-  padding: 0;
-  margin: 0;
+  padding: 10px;
+  margin: -10px;
+  background-color: rgb(178, 199, 243);
 }
 .actions button i{
   font-size: 33px;
+  padding: 0;
+  margin: 0;
+  background-color: rgb(178, 199, 243);
 }
 
 /* ----------------------------- DIALOG   --------------------------   */
@@ -291,7 +293,8 @@ nav {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: rgba(250, 248, 248, 0.904);
+  background-color: rgba(230, 230, 230, 0.904);
+  box-shadow: 0 2px 4px 0 rgba(0,0,0,.2);
   position: sticky;
   top: 0;
   color: rgb(0, 0, 0);
@@ -329,19 +332,17 @@ ul li a {
   text-decoration: none;
   color: rgb(0, 0, 0);
 }
-ul li:hover {
-  background-color: var(--main-color-light);
-  color: white;
-  border: none;
-}
+
 ul li a:hover{
-  color: white;
+
   text-decoration: none;
+  
 }
 
 .active {
-  background-color: var(--main-color);
-  color: white;
+  background-color: rgb(108, 108, 250);
+  color: rgb(255, 255, 255);
+ 
 }
 
 ul h2 {
