@@ -1,6 +1,6 @@
 :root {
   --main-color: #616061;
-  --main-color-light: rgb(95, 93, 93);
+  --main-color-light: rgb(134, 134, 134);
   --white-color: #ffffff;
 }
 
@@ -53,7 +53,7 @@ button:active {
   justify-content: center;
   align-items: center;
   width: 100vw;
-  height: 100vh;
+  height: 80vh;
 }
 /* --------------- PLAY VIEW    --------------------- ---------------   */
 
@@ -85,10 +85,21 @@ button:active {
 }
 
 #score {
+  background: #eee;
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
   display: flex;
-  justify-content: center;
+  justify-content: space-around;
   align-items: center;
- 
+  border-radius: 5px;
+  width: 30%;
+  height: 20vh;
+  padding: 2rem 1rem;
+}
+#scor-container{
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  text-align: center;
 }
 
 #question {
@@ -152,7 +163,7 @@ button:active {
 
   margin-bottom: 20px;
 }
-span{
+.ans{
   border: 1px solid #000000;
   margin: 10px 10px;
   padding:  5px;
@@ -280,10 +291,10 @@ nav {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: rgba(0, 0, 0, 0.904);
+  background-color: rgba(250, 248, 248, 0.904);
   position: sticky;
   top: 0;
-  color: white;
+  color: rgb(0, 0, 0);
 }
 
 ul img {
@@ -295,7 +306,7 @@ ul > h2 {
 }
 
 nav img {
-  width: 80px;
+  width: 45px;
   height: 37px;
   cursor: pointer;
 }
@@ -316,11 +327,16 @@ ul li {
 
 ul li a {
   text-decoration: none;
-  color: rgb(255, 255, 255);
+  color: rgb(0, 0, 0);
 }
 ul li:hover {
   background-color: var(--main-color-light);
+  color: white;
   border: none;
+}
+ul li a:hover{
+  color: white;
+  text-decoration: none;
 }
 
 .active {
@@ -384,4 +400,14 @@ ul h2 {
   border: none;
   padding: 10px;
   border-radius: 5px;
+}
+.form-group span{
+  font-size: 14px;
+  color: red;
+  padding: 5px;
+  border: none;
+  border-radius: 5px;
+}
+#submit-error{
+  color: red;
 }

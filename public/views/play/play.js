@@ -36,7 +36,7 @@ function renderQuestion() {
     let questions = results.data;
     let question = questions[currentQuestionIndex];
     let answers = question.answers;
-    let dom_question = document.createElement("div");
+    let dom_question = document.createElement("h3");
     dom_question.id = "question";
     dom_question.textContent = question.title;
     dom_quiz.appendChild(dom_question);
