@@ -6,8 +6,8 @@ const questionModel = require('../models/model');
 
 
 //  get all question route
-router.get('/questions', (req, res) => {
-    questionModel.find()
+router.get('/questions/:id', (req, res) => {
+    questionModel.find({user_id: req.params.id})
     .then((result) => {
         res.send(result);
     })

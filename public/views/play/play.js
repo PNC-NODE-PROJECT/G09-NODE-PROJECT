@@ -13,7 +13,8 @@ let currentQuestionIndex = 0;
 
 
 function renderQuestion() {
-  let URL = "http://localhost:80/quiz/questions";
+  let id = sessionStorage.userId;
+  let URL = "http://localhost:80/quiz/questions/" + id;
   axios.get(URL).then((results) => {
     while (dom_quiz.firstChild) {
       dom_quiz.removeChild(dom_quiz.lastChild);
@@ -21,7 +22,7 @@ function renderQuestion() {
     let questions = results.data;
     let question = questions[currentQuestionIndex];
     let answers = question.answers;
-    let dom_question = document.createElement("h3");
+    let dom_question = document.createElement("h2");
     dom_question.id = "question";
     dom_question.textContent = question.title;
     dom_quiz.appendChild(dom_question);

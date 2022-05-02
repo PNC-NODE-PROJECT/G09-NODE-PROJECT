@@ -173,8 +173,8 @@ function validationForm(){
 
 // Get all qestion from mongodb and display -----------------------------
 function displayQuestion() {
-  
-  let URL = "http://localhost:80/quiz/questions";
+  let id = sessionStorage.userId;
+  let URL = "http://localhost:80/quiz/questions/" + id;
   
     axios.get(URL).then((results) => {
    
