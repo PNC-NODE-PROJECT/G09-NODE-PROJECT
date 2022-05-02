@@ -18,6 +18,10 @@ const questionSchema = new mongoose.Schema({
     answers: [
         {choice: {type: String, required: true}, corrected:{type: Boolean}}
     ],  
+    user_id: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "users"
+    }
 })
 
 // Create model for questions

@@ -23,7 +23,7 @@ function addQuestion() {
 
       // TODO: request the server to create new student
       let URL = "http://localhost:80/quiz/create";
-      let body = {title: inputTitle, answers:answer };
+      let body = {title: inputTitle, answers:answer,user_id: sessionStorage.userId};
       console.log(body);
       axios.post(URL, body).then((req, res) => {
         
@@ -392,7 +392,7 @@ const correctAns = document.querySelectorAll('#check');
 const submitForm = document.querySelector("#submit");
 const allChoice = document.getElementsByName("choice");
 const btn_add = document.querySelector('#btn-add');
-
+btn_add.addEventListener('click', isClickAdd);
 const questionError = document.getElementById('question-error');
 const answer1Error = document.getElementById('answer1-error');
 const answer2Error = document.getElementById('answer2-error');

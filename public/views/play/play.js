@@ -60,7 +60,8 @@ function returnValue(event){
 
 // Check correct ans
 function checkAnswer(choice) {
-  let URL = "http://localhost:80/quiz/questions";
+  let id = sessionStorage.userId;
+  let URL = "http://localhost:80/quiz/questions/"+ id;
   axios.get(URL).then((results) => {
     let questions = results.data;
     let question = questions[currentQuestionIndex];
@@ -92,7 +93,8 @@ function showScore() {
     hide(dom_quiz);
     show(dom_score);
     // dom_score_p.textContent = score;
-    let URL = "http://localhost:80/quiz/questions";
+    let id = sessionStorage.userId;
+    let URL = "http://localhost:80/quiz/questions/"+ id;
     axios.get(URL).then((results) => {
     // // calculate the amount of question percent answered by the user
       let questions = results.data;
