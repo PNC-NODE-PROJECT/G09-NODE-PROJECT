@@ -325,6 +325,11 @@ ul li {
   margin-left: 5px;
   cursor: pointer;
 }
+ul li:hover{
+  padding: 5px 10px;
+  margin-left: 5px;
+  background-color: rgb(136, 136, 240);
+}
 
 ul li a {
   text-decoration: none;
@@ -332,12 +337,13 @@ ul li a {
 }
 
 ul li a:hover{
-
   text-decoration: none;
   
 }
 
 .active {
+  padding: 5px 10px;
+  margin-left: 5px;
   background-color: rgb(108, 108, 250);
   color: rgb(255, 255, 255);
  
