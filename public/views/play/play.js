@@ -98,7 +98,6 @@ function showScore() {
       const scorePerCent = Math.round((100 * score) / questions.length);
       // // choose the image based on the scorePerCent
       let image = "../../img/";
-      let comment;
       if (scorePerCent < 50) {
         image += "20.png";
       } else if (scorePerCent >= 50) {
