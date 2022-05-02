@@ -1,6 +1,6 @@
 :root {
   --main-color: #616061;
-  --main-color-light: rgb(95, 93, 93);
+  --main-color-light: rgb(134, 134, 134);
   --white-color: #ffffff;
 }
 
@@ -52,7 +52,7 @@ button:active {
   justify-content: center;
   align-items: center;
   width: 100vw;
-  height: 100vh;
+  height: 80vh;
 }
 /* --------------- PLAY VIEW    --------------------- ---------------   */
 
@@ -90,7 +90,11 @@ button:active {
   justify-content: space-around;
   align-items: center;
   border-radius: 5px;
+<<<<<<< HEAD
   width: 25%;
+=======
+  width: 30%;
+>>>>>>> fefd8587afbb3b149c8fde8c8e80b1d4d9644b72
   height: 20vh;
   padding: 2rem 1rem;
 }
@@ -162,7 +166,7 @@ button:active {
 
   margin-bottom: 20px;
 }
-span{
+.ans{
   border: 1px solid #000000;
   margin: 10px 10px;
   padding:  5px;
@@ -290,10 +294,10 @@ nav {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: rgba(0, 0, 0, 0.904);
+  background-color: rgba(250, 248, 248, 0.904);
   position: sticky;
   top: 0;
-  color: white;
+  color: rgb(0, 0, 0);
 }
 
 ul img {
@@ -305,7 +309,7 @@ ul > h2 {
 }
 
 nav img {
-  width: 80px;
+  width: 45px;
   height: 37px;
   cursor: pointer;
 }
@@ -325,11 +329,16 @@ ul li {
 
 ul li a {
   text-decoration: none;
-  color: rgb(255, 255, 255);
+  color: rgb(0, 0, 0);
 }
 ul li:hover {
   background-color: var(--main-color-light);
+  color: white;
   border: none;
+}
+ul li a:hover{
+  color: white;
+  text-decoration: none;
 }
 
 .active {
@@ -394,4 +403,14 @@ ul h2 {
   border: none;
   padding: 10px;
   border-radius: 5px;
+}
+.form-group span{
+  font-size: 14px;
+  color: red;
+  padding: 5px;
+  border: none;
+  border-radius: 5px;
+}
+#submit-error{
+  color: red;
 }

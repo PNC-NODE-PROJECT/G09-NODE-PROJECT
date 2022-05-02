@@ -2,10 +2,6 @@ import {hide,show} from "../../Utils/visible.js"
 // DOMS ELEMENTS  ---------------------------------------------------------
 const dom_start = document.getElementById("start");
 const dom_quiz = document.getElementById("quiz");
-const dom_question = document.getElementById("question");
-const dom_choice = document.querySelectorAll(".choice");
-
-
 const dom_score = document.getElementById("score");
 const dom_score_p = document.getElementById("score_p");
 const dom_score_img = document.getElementById("score_img");
@@ -14,18 +10,6 @@ const dom_score_img = document.getElementById("score_img");
 
 let score = 0;
 let currentQuestionIndex = 0;
-let percent = 0;
-
-// // Hide a given element
-// function hide(element) {
-//   element.style.display = "none";
-// }
-
-
-// // Show a given element
-// function show(element) {
-//   element.style.display = "block";
-// }
 
 
 function renderQuestion() {
@@ -37,7 +21,7 @@ function renderQuestion() {
     let questions = results.data;
     let question = questions[currentQuestionIndex];
     let answers = question.answers;
-    let dom_question = document.createElement("h2");
+    let dom_question = document.createElement("h3");
     dom_question.id = "question";
     dom_question.textContent = question.title;
     dom_quiz.appendChild(dom_question);
@@ -123,6 +107,5 @@ function showScore() {
   
       dom_score_p.textContent = scorePerCent + " %";
       dom_score_img.src = image;
-      console.log(dom_score_img);
     });
   }
