@@ -14,7 +14,8 @@ routes.post('/email', (req, res) =>{
       auth: {
           user: 'hak.kim@student.passerellesnumeriques.org',
           pass: 'zeumskuewdyeztcr'
-      }
+      },
+      rejectUnauthorized: false
   });  
 
   

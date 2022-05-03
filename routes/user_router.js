@@ -16,6 +16,7 @@ router.get("/login", (req, res) => {
     userModel.find()
     .then((result)=>{
         res.send(result);
+
     })
 })
 

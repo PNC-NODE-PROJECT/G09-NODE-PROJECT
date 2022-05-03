@@ -1,5 +1,4 @@
 
-
 function register(){
     let url = 'http://localhost:80/users/register';
     let username = USER_NAME.value;
