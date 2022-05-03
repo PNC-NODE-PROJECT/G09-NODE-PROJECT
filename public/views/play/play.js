@@ -11,7 +11,6 @@ const dom_score_img = document.getElementById("score_img");
 let score = 0;
 let currentQuestionIndex = 0;
 
-
 function renderQuestion() {
   let id = sessionStorage.userId;
   let URL = "http://localhost:80/quiz/questions/" + id;
@@ -99,6 +98,7 @@ function showScore() {
     // // calculate the amount of question percent answered by the user
       let questions = results.data;
       const scorePerCent = Math.round((100 * score) / questions.length);
+      saveUserScore(scorePerCent);
       // // choose the image based on the scorePerCent
       let image = "../../img/";
       if (scorePerCent < 50) {
@@ -110,4 +110,15 @@ function showScore() {
       dom_score_p.textContent = scorePerCent + " %";
       dom_score_img.src = image;
     });
+  }
+
+  
+  // save score to database
+  function saveUserScore(score){
+    let id = sessionStorage.userId;
+    let URL = "http://localhost:80/users/score/"+id;
+    let body = {score: score};
+    axios.post(URL, body).then((req, res) => {
+      console.log("Score already stored");
+    })
   }

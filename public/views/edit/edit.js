@@ -1,4 +1,4 @@
-import {hide,show} from "../../Utils/visible.js"
+
 let questionToEdit = null;
 
 // Add question to mongodb ---------------------------------------------
@@ -20,9 +20,9 @@ function addQuestion() {
 
     if(check){
       submitForm.setAttribute("data-dismiss","modal");
-
+      let id = sessionStorage.userId;
       // TODO: request the server to create new student
-      let URL = "http://localhost:80/quiz/create";
+      let URL = "http://localhost:80/quiz/create/"+ id;
       let body = {title: inputTitle, answers:answer,user_id: sessionStorage.userId};
       console.log(body);
       axios.post(URL, body).then((req, res) => {
@@ -287,9 +287,10 @@ function isClickEdit(event){
   questionToEdit = event.target.parentElement.id ;
 
   // change header modal edite question
+  let id = sessionStorage.userId;
   modal_title.textContent = "Edit question";
   modal_header.style.backgroundColor="#ffab91";
-  let URL = "http://localhost:80/quiz/questions";
+  let URL = "http://localhost:80/quiz/questions/"+id;
   if (questionToEdit !== null){
     axios.get(URL).then((results) => {
       let questions = results.data;
@@ -399,7 +400,9 @@ const answer2Error = document.getElementById('answer2-error');
 const answer3Error = document.getElementById('answer3-error');
 const answer4Error = document.getElementById('answer4-error');
 const submitError = document.getElementById('submit-error');
+const dismiss = document.querySelector(".close");
 
+dismiss.addEventListener('click', ClearvalidationForm);
 submitForm.addEventListener('click', submit);
 
 displayQuestion();

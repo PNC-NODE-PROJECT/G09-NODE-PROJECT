@@ -17,8 +17,9 @@ const userSchema = new mongoose.Schema({
     user_name: {type: String, required: true},
     email: {type: String, required: true},
     password: {type: String, required: true},
-    score: {type: Number}
+    userScore: {type: Number}
 })
+
 
 // Create model for questions
 const userModel = new mongoose.model("users", userSchema);
