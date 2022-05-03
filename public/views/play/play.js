@@ -104,6 +104,8 @@ function showScore() {
       let questions = results.data;
       const scorePerCent = Math.round((100 * score) / questions.length);
       saveUserScore(scorePerCent);
+
+      getUserById();
       // // choose the image based on the scorePerCent
       let image = "../../img/";
       if (scorePerCent < 50) {
@@ -127,3 +129,30 @@ function showScore() {
       console.log("Score already stored");
     })
   }
+
+  function getUserById(){
+    let id = sessionStorage.userId;
+    let URL = "http://localhost:80/users/user/"+id;
+    axios.get(URL).then((results) => {
+      console.log(results.data);
+      let data = results.data;
+      sendUserScore(data);
+    })
+  }
+
+  function sendUserScore(userInFo){
+    console.log(userInFo+'hi');
+    let URL = "/emails/email";
+    let email = {
+      "from": "hak.kim@student.passerellesnumeriques.org",
+      "to": userInFo[0].email,
+      "subject": "Hi "+ userInFo[0].user_name,
+      "content": "Your scores is: " + userInFo[0].userScore
+      }
+    axios.post(URL, email).then((req, res) => {
+      res.send("send");
+    })
+
+
+  }
+  
