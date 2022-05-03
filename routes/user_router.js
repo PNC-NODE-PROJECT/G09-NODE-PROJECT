@@ -4,6 +4,13 @@ const router = express.Router();
 const userModel = require('../models/user_model');
 
 
+router.get("/user/:id", (req, res) => {
+    userModel.find({_id:req.params.id})
+    .then((result)=>{
+        res.send(result);
+    })
+})
+
 
 router.get("/login", (req, res) => {
     userModel.find()

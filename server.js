@@ -23,7 +23,9 @@ app.use(express.static("./public"));
 // require route
 let questionRouter = require("./routes/question_router");
 let userRouter = require("./routes/user_router.js")
+let emailRouter = require("./routes/nodemailer")
 
 // use routes
 app.use("/quiz", questionRouter);
 app.use("/users", userRouter);
+app.use("/emails", emailRouter)

@@ -14,7 +14,7 @@ router.get('/questions/:id', (req, res) => {
 })
 
 //  create question route
-router.post('/create', (req, res) => {
+router.post('/create/:id', (req, res) => {
     questionModel.create(req.body)
     .then((result) => {
         res.status(201).send(result);  
