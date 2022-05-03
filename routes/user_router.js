@@ -23,7 +23,7 @@ if (req.body.username != "" && req.body.password != "" && req.body.email != ""){
 }
 })
 
-router.post("/score/:id",(req, res)=>{
+router.patch("/score/:id",(req, res)=>{
     userModel.updateOne({_id: req.params.id},{userScore: req.body.score})
     .then((result)=>{
         res.status(200).send(result);

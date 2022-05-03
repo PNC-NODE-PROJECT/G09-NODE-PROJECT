@@ -1,3 +1,6 @@
+if (!sessionStorage.userId) {
+  location.href = "../../register/register.html"
+}
 
 let questionToEdit = null;
 
@@ -21,10 +24,10 @@ function addQuestion() {
     if(check){
       submitForm.setAttribute("data-dismiss","modal");
       let id = sessionStorage.userId;
+      console.log(id);
       // TODO: request the server to create new student
       let URL = "http://localhost:80/quiz/create/"+ id;
-      let body = {title: inputTitle, answers:answer,user_id: sessionStorage.userId};
-      console.log(body);
+      let body = {title: inputTitle, answers:answer,user_id: id};
       axios.post(URL, body).then((req, res) => {
         
         
@@ -224,7 +227,7 @@ function renderQuestions(questions) {
       ans.textContent = answer.choice;
       card_ans.appendChild(ans);
       if(answer.corrected){
-        ans.style.backgroundColor="green";
+        ans.style.backgroundColor="#43a047";
       }
     }
 

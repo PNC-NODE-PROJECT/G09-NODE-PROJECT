@@ -1,4 +1,9 @@
+if (!sessionStorage.userId) {
+  location.href = "../../register/register.html"
+}
+
 import {hide,show} from "../../Utils/visible.js"
+
 // DOMS ELEMENTS  ---------------------------------------------------------
 const dom_start = document.getElementById("start");
 const dom_quiz = document.getElementById("quiz");
@@ -118,7 +123,7 @@ function showScore() {
     let id = sessionStorage.userId;
     let URL = "http://localhost:80/users/score/"+id;
     let body = {score: score};
-    axios.post(URL, body).then((req, res) => {
+    axios.patch(URL, body).then((req, res) => {
       console.log("Score already stored");
     })
   }
