@@ -24,22 +24,28 @@ function renderQuestion() {
       dom_quiz.removeChild(dom_quiz.lastChild);
     }
     let questions = results.data;
-    let question = questions[currentQuestionIndex];
-    let answers = question.answers;
-    let dom_question = document.createElement("h2");
-    dom_question.id = "question";
-    dom_question.textContent = question.title;
-    dom_quiz.appendChild(dom_question);
-    let choices = document.createElement("div");
-    choices.id = "choices";
-    
-    for (let i = 0;i<answers.length;i++){
-      let button = document.createElement("button");
-      button.textContent = answers[i].choice;
-      button.value = answers[i].corrected;
-      button.addEventListener("click", returnValue);
-      choices.appendChild(button);
-      dom_quiz.appendChild(choices);
+    if (questions.length > 0) {
+      let question = questions[currentQuestionIndex];
+      let answers = question.answers;
+      let dom_question = document.createElement("h2");
+      dom_question.id = "question";
+      dom_question.textContent = question.title;
+      dom_quiz.appendChild(dom_question);
+      let choices = document.createElement("div");
+      choices.id = "choices";
+      
+      for (let i = 0;i<answers.length;i++){
+        let button = document.createElement("button");
+        button.textContent = answers[i].choice;
+        button.value = answers[i].corrected;
+        button.addEventListener("click", returnValue);
+        choices.appendChild(button);
+        dom_quiz.appendChild(choices);
+      }
+
+    }else{
+      dom_quiz.textContent = "Don't have any questions and answers, please create a new question.";
+      dom_quiz.style.textAlign = "center";
     }
 
   })
@@ -130,18 +136,20 @@ function showScore() {
     })
   }
 
+  // get user specific id
   function getUserById(){
     let id = sessionStorage.userId;
     let URL = "http://localhost:80/users/user/"+id;
     axios.get(URL).then((results) => {
-      console.log(results.data);
       let data = results.data;
+      user_name.innerHTML = data[0].user_name
+      
       sendUserScore(data);
     })
   }
 
+  // send score to database
   function sendUserScore(userInFo){
-    console.log(userInFo+'hi');
     let URL = "/emails/email";
     let email = {
       "from": "hak.kim@student.passerellesnumeriques.org",
@@ -155,4 +163,8 @@ function showScore() {
 
 
   }
+  
+  // display user name
+  let user_name = document.querySelector(".userName");
+  getUserById();
   

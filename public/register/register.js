@@ -10,6 +10,7 @@ function register(){
         .then((result)=>{
             if (result.data){
                 sessionStorage.setItem('userId',result.data._id);
+                sessionStorage.setItem('userName',result.data.user_name);
                 location.href = "../login/login.html";
             }
         })

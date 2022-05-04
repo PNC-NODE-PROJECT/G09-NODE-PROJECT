@@ -7,6 +7,7 @@ routes.get('/test', (req, res) => {
   res.status(200).json({ message: 'test!' });
 });
 
+// send score though email
 routes.post('/email', (req, res) =>{
 
   var smtpTransport = nodemailer.createTransport({
@@ -29,6 +30,7 @@ routes.post('/email', (req, res) =>{
     
   };
 
+  
   smtpTransport.sendMail(mailOptions, (error, info) => {
     if (error) {
         return console.log('Error while sending mail: ' + error);
