@@ -3,7 +3,7 @@ if (!sessionStorage.userId) {
 }
 
 let questionToEdit = null;
-
+let userName = null;
 // Add question to mongodb ---------------------------------------------
 function addQuestion() {
   
@@ -24,7 +24,6 @@ function addQuestion() {
     if(check){
       submitForm.setAttribute("data-dismiss","modal");
       let id = sessionStorage.userId;
-      console.log(id);
       // TODO: request the server to create new student
       let URL = "http://localhost:80/quiz/create/"+ id;
       let body = {title: inputTitle, answers:answer,user_id: id};
@@ -180,12 +179,21 @@ function displayQuestion() {
   let URL = "http://localhost:80/quiz/questions/" + id;
   
     axios.get(URL).then((results) => {
-   
       renderQuestions(results.data);
      
   
     })
   
+}
+
+// get user specifice id 
+function getUserById(){
+  let id = sessionStorage.userId;
+  let URL = "http://localhost:80/users/user/"+id;
+  axios.get(URL).then((results) => {
+    let data = results.data;
+    user_name.innerHTML = data[0].user_name
+  })
 }
 
 // Create Element and Refresh Dom ---------------------------------------
@@ -314,6 +322,7 @@ function isClickEdit(event){
   }
 }
 
+// edit question an answer
 function editQuestion(e){
   e.preventDefault();
   
@@ -348,6 +357,7 @@ function editQuestion(e){
   
 }
 
+// check if user click on add or edit
 function submit(e) {
   e.preventDefault();
   if(questionToEdit == null){
@@ -359,6 +369,8 @@ function submit(e) {
   }
 }
 
+
+// clear form after submission
 function clearForm(){
 
   document.querySelector("#title").value = "";
@@ -407,5 +419,7 @@ const dismiss = document.querySelector(".close");
 
 dismiss.addEventListener('click', ClearvalidationForm);
 submitForm.addEventListener('click', submit);
-
+let user_name = document.querySelector(".userName");
+// call back function 
+getUserById();
 displayQuestion();
