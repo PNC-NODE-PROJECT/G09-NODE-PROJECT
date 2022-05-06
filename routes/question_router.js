@@ -5,7 +5,7 @@ const router = express.Router();
 const questionModel = require('../models/model');
 
 
-//  get all question route
+//  get question route
 router.get('/questions/:id', (req, res) => {
     questionModel.find({user_id: req.params.id})
     .then((result) => {

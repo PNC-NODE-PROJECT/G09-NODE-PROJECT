@@ -1,5 +1,5 @@
 if (sessionStorage.userId){
-    location.href = "home/quiz.html";
+    location.href = "home/home.html";
 }else{
     location.href = "register/register.html";
 }
