@@ -96,6 +96,7 @@ function checkAnswer(choice) {
 function showScore() {
     hide(dom_quiz);
     show(dom_score);
+    Swal.fire('Your score has been sent to your Gmail')
     // dom_score_p.textContent = score;
     let id = sessionStorage.userId;
     let URL = "http://localhost:80/quiz/questions/"+ id;
@@ -117,6 +118,7 @@ function showScore() {
       dom_score_p.textContent = scorePerCent + " %";
       dom_score_img.src = image;
     });
+    
   }
 
   
@@ -146,8 +148,8 @@ function showScore() {
     let email = {
       "from": "hak.kim@student.passerellesnumeriques.org",
       "to": userInFo[0].email,
-      "subject": "Hi "+ userInFo[0].user_name,
-      "content": "Your scores is: " + userInFo[0].userScore
+      "subject": "Send score",
+      "content":"Dear "+userInFo[0].user_name+"\n"+"\n"+"You have been played our QUIZ APP."+"\n"+ "Here is your scores: " + userInFo[0].userScore+"%"+"\n"+"Thank you"+"\n"+"\n"+"KIM HAK"
       }
     axios.post(URL, email).then((req, res) => {
       res.send("send");
