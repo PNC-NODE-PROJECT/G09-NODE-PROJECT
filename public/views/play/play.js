@@ -1,4 +1,5 @@
 import {hide,show} from "../../Utils/visible.js"
+require('dotenv').config();
 if (sessionStorage.userId) {
   
   // DOMS ELEMENTS  ---------------------------------------------------------
@@ -15,7 +16,7 @@ if (sessionStorage.userId) {
   
   function renderQuestion() {
     let id = sessionStorage.userId;
-    let URL = "http://localhost:80/quiz/questions/" + id;
+    let URL = "/quiz/questions/" + id;
     axios.get(URL).then((results) => {
       while (dom_quiz.firstChild) {
         dom_quiz.removeChild(dom_quiz.lastChild);
@@ -68,7 +69,7 @@ if (sessionStorage.userId) {
   // Check correct ans
   function checkAnswer(choice) {
     let id = sessionStorage.userId;
-    let URL = "http://localhost:80/quiz/questions/"+ id;
+    let URL = "/quiz/questions/"+ id;
     axios.get(URL).then((results) => {
       let questions = results.data;
       let question = questions[currentQuestionIndex];
@@ -102,7 +103,7 @@ if (sessionStorage.userId) {
       Swal.fire('Your score has been sent to your Gmail')
       // dom_score_p.textContent = score;
       let id = sessionStorage.userId;
-      let URL = "http://localhost:80/quiz/questions/"+ id;
+      let URL = "/quiz/questions/"+ id;
       axios.get(URL).then((results) => {
         console.log(results);
       // // calculate the amount of question percent answered by the user
@@ -129,7 +130,7 @@ if (sessionStorage.userId) {
     // save score to database
     function saveUserScore(score){
       let id = sessionStorage.userId;
-      let URL = "http://localhost:80/users/score/"+id;
+      let URL = "/users/score/"+id;
       let body = {score: score};
       axios.patch(URL, body).then((req, res) => {
         console.log("Score already stored");
@@ -139,7 +140,7 @@ if (sessionStorage.userId) {
     // get user specific id
     function getUserById(){
       let id = sessionStorage.userId;
-      let URL = "http://localhost:80/users/user/"+id;
+      let URL = "/users/user/"+id;
       axios.get(URL).then((results) => {
         let data = results.data;
         user_name.innerHTML = data[0].user_name
@@ -152,7 +153,7 @@ if (sessionStorage.userId) {
     function sendUserScore(userInFo){
       let URL = "/emails/email";
       let email = {
-        "from": "hak.kim@student.passerellesnumeriques.org",
+        "from": process.env.USER_EMAIL,
         "to": userInFo[0].email,
         "subject": "Send score",
         "content":"Dear "+userInFo[0].user_name+"\n"+"\n"+"You have been played our QUIZ APP."+"\n"+ "Here is your scores: " + userInFo[0].userScore+"%"+"\n"+"Thank you"+"\n"+"\n"+"KIM HAK"

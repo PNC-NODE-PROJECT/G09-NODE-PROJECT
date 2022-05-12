@@ -1,6 +1,6 @@
 
 function register(){
-    let url = 'http://localhost:80/users/register';
+    let url = '/users/register';
     let username = USER_NAME.value;
     let email = USER_EMAIL.value;
     let password = USER_PASSWORD.value;

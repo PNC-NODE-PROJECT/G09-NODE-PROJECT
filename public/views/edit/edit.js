@@ -23,7 +23,7 @@ if (sessionStorage.userId) {
         submitForm.setAttribute("data-dismiss","modal");
         let id = sessionStorage.userId;
         // TODO: request the server to create new student
-        let URL = "http://localhost:80/quiz/create/"+ id;
+        let URL = "/quiz/create/"+ id;
         let body = {title: inputTitle, answers:answer,user_id: id};
         axios.post(URL, body).then((req, res) => {
           
@@ -174,7 +174,7 @@ if (sessionStorage.userId) {
   // Get all qestion from mongodb and display -----------------------------
   function displayQuestion() {
     let id = sessionStorage.userId;
-    let URL = "http://localhost:80/quiz/questions/" + id;
+    let URL = "/quiz/questions/" + id;
       console.log(URL);
       axios.get(URL).then((results) => {
         console.log(results);
@@ -186,7 +186,7 @@ if (sessionStorage.userId) {
   // get user specifice id 
   function getUserById(){
     let id = sessionStorage.userId;
-    let URL = "http://localhost:80/users/user/"+id;
+    let URL = "/users/user/"+id;
     axios.get(URL).then((results) => {
       let data = results.data;
       user_name.innerHTML = data[0].user_name
@@ -274,7 +274,7 @@ if (sessionStorage.userId) {
         // TODO: Request to the server to detele one question
         let id = e.target.parentElement.parentElement.id;
         
-        let URL = "http://localhost:80/quiz/delete/"+id;
+        let URL = "/quiz/delete/"+id;
         axios.delete(URL).then(displayQuestion());
       }
     } 
@@ -298,7 +298,7 @@ if (sessionStorage.userId) {
     let id = sessionStorage.userId;
     modal_title.textContent = "Edit question";
     modal_header.style.backgroundColor="#ffab91";
-    let URL = "http://localhost:80/quiz/questions/"+id;
+    let URL = "/quiz/questions/"+id;
     if (questionToEdit !== null){
       axios.get(URL).then((results) => {
         let questions = results.data;
@@ -340,7 +340,7 @@ if (sessionStorage.userId) {
           let body = {title: inputTitle, answers:answer };
           // Request to the server to update one question
           let id = questionToEdit;
-          let URL = "http://localhost:80/quiz/update/" + id;
+          let URL = "/quiz/update/" + id;
           axios.put(URL,body).then((req, res) => {
             displayQuestion();
             ClearvalidationForm();

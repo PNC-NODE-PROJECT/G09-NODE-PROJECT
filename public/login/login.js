@@ -2,7 +2,7 @@
 function login(){
     let user_email = USER_EMAIL.value;
     let password = USER_PASSWORD.value;
-    let url = "http://localhost:80/users/login/";
+    let url = "/users/login";
     if (user_email != "" && password != ""){
         axios.get(url)
         .then((responses)=>{

@@ -17,7 +17,7 @@ routes.post('/email', (req, res) =>{
   
   var mailOptions = {
    
-    from: "hak.kim@student.passerellesnumeriques.org",
+    from: process.env.USER_EMAIL,
     to: req.body.to,
     subject: req.body.subject,
     text: req.body.content,
