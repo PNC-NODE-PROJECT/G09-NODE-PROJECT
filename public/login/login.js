@@ -7,17 +7,37 @@ function login(){
         axios.get(url)
         .then((responses)=>{
             let users = responses.data;
-            for (let i = 0; i < users.length; i++) {
-                if (user_email == users[i].email && password == users[i].password){
-                    sessionStorage.setItem("userId", users[i]._id);
-                    location.href = "../home/home.html";
+            let isCorrect = false;
+            for(let user of users) {
+                if (user_email == user.email && password == user.password){
+                    isCorrect = true;
+                    sessionStorage.setItem("userId", user._id);
+                    sessionStorage.setItem('userName',user.user_name);
+                    
                 }
             }
+            if (isCorrect){
+                location.href = "../home/home.html";
+            }else{
+                alert("Wrong email or password");
+            }
         })
+    }else{
+        emailBox.className = "invalid";
+        emailText.innerHTML = "Your email address is invalid.";
+        passBox.className = "invalid";
+        passText.innerHTML = "Your password is invalid";
     }
 
 }
 
+
 // ---------main --------
 let USER_EMAIL = document.getElementById("email");
 let USER_PASSWORD = document.getElementById("password");
+let email_error = document.querySelector(".log-email");
+let password_error = document.querySelector(".log-pass");
+let passBox = document.querySelector(".passBox");
+let emailText = document.querySelector(".emailText");
+let passText = document.querySelector(".passText");
+let emailBox = document.querySelector(".emailBox");

@@ -1,5 +1,4 @@
 import {hide,show} from "../../Utils/visible.js"
-require('dotenv').config();
 if (sessionStorage.userId) {
   
   // DOMS ELEMENTS  ---------------------------------------------------------
@@ -153,7 +152,7 @@ if (sessionStorage.userId) {
     function sendUserScore(userInFo){
       let URL = "/emails/email";
       let email = {
-        "from": process.env.USER_EMAIL,
+        "from": "hak.kim@student.passerellesnumeriques.org",
         "to": userInFo[0].email,
         "subject": "Send score",
         "content":"Dear "+userInFo[0].user_name+"\n"+"\n"+"You have been played our QUIZ APP."+"\n"+ "Here is your scores: " + userInFo[0].userScore+"%"+"\n"+"Thank you"+"\n"+"\n"+"KIM HAK"

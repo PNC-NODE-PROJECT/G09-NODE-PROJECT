@@ -444,3 +444,25 @@ ul h2 {
   margin-left: 5px;
   background-color: var(--white-color);
 }
+
+/* register validation */
+.valid .emailText,
+.valid .passText,
+.valid .nameText{
+  color: #00ff00;
+}
+.invalid .emailText,
+.invalid .passText,
+.invalid .nameText{
+  color: #f00;
+}
+
+.valid::before,
+.invalid::before{
+  content: "";
+  position: absolute;
+  width: 24px;
+  height: 24px;
+  right: 5px;
+  z-index: 100;
+}

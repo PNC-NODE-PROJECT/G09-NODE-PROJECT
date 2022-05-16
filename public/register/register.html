@@ -26,30 +26,32 @@
               <h2 class="text-center fw-bold mx-3 mb-0">Register</h2>
             </div>
             <!-- Email input -->
-            <div class="form-outline mb-2">
+            <div class="form-outline mb-1 nameBox">
+              <label class="form-label mt-1" for="userName">User Name</label>
               <input type="text" id="userName" required class="form-control form-control-lg"
                 placeholder="Enter a Your name" />
-              <label class="form-label" for="userName">User Name</label>
+                <small class="nameText mb-1"></small>
             </div>
   
             <!-- Email input -->
-            <div class="form-outline mb-2">
-              <input type="email" required id="email" class="form-control form-control-lg"
-                placeholder="Enter a valid email address" />
-              <label class="form-label" for="email">Email address</label>
+            <div class="form-outline mb-1 emailBox">
+              <label class="form-label mt-1" for="email">Email address</label>
+              <input type="email" required id="email" class="form-control form-control-lg" placeholder="Enter a valid email address" />
+              <small class="emailText mb-1"></small>
             </div>
   
   
             <!-- Password input -->
-            <div class="form-outline mb-2">
+            <div class="form-outline mb-1 passBox">
+              <label class="form-label mt-1" for="password">Password</label>
               <input type="password" required id="password" class="form-control form-control-lg"
                 placeholder="Enter password" />
-              <label class="form-label" for="password">Password</label>
+                <small class="passText mb-1"></small>
             </div>
   
             <div class="text-center d-flex justify-content-center mt-2 pt-2">
               <button type="button" class="btn btn-primary btn-lg" onclick="register()"
-                style="padding-left: 2.5rem; padding-right: 2.5rem;">SingUp</button>
+                style="padding-left: 2.5rem; padding-right: 2.5rem;">SignUp</button>
             </div>
             <div class="text-center d-flex justify-content-center mt-2 pt-2">
               <p class="small fw-bold mt-2 pt-1 mb-0">Already have an account? <a href="../login/login.html"

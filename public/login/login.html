@@ -25,16 +25,18 @@
               <h2 class="text-center fw-bold mx-3 mb-0">Login</h2>
             </div>
             <!-- Email input -->
-            <div class="form-outline mb-4">
-              <input type="email" required id="email" class="form-control form-control-lg"
-                placeholder="Enter a valid email address" />
+            <div class="form-outline mb-4 emailBox">
               <label class="form-label mt-1" for="email">Email address</label>
+              <input type="email" required id="email" class="form-control form-control-lg"
+                placeholder="Enter a valid email address"/>
+              <small class="emailText"></small>
             </div>
             <!-- Password input -->
-            <div class="form-outline mb-3">
+            <div class="form-outline mb-3 passBox">
+              <label class="form-label mt-1" for="password">Password</label>
               <input type="password" id="password" required class="form-control form-control-lg"
                 placeholder="Enter password" />
-              <label class="form-label mt-1" for="password">Password</label>
+                <small class="passText"></small>
             </div>  
             <div class="text-center text-lg-start mt-lg-4 pt-2 d-flex justify-content-center align-items-center">
               <button type="button" class="btn btn-primary btn-lg" onclick="login()"

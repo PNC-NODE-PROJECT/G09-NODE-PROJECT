@@ -5,7 +5,7 @@ if (sessionStorage.userId) {
   // Add question to mongodb ---------------------------------------------
   function addQuestion() {
     
-    if (title.value !== "" && choiceA.value !== "" && choiceB.value !== "" && choiceC.value !== "" && choiceD.value !== ""){
+    if (title.value !== "" && choiceA.value !== "" && choiceB.value !== "" && choiceC.value !== "" && choiceD.value !== "" && choiceA.value !== choiceB.value && choiceC.value !== choiceD.value && choiceA.value !== choiceD.value && choiceB.value !== choiceD.value && choiceA.value !== choiceD && choiceA.value !== choiceC.value){
       let inputTitle = title.value;
       let answer = [{choice:choiceA.value,corrected:false},{choice:choiceB.value,corrected:false},{choice:choiceC.value,corrected:false},{choice:choiceD.value,corrected:false}];
       let check = false;
@@ -113,7 +113,7 @@ if (sessionStorage.userId) {
     var answer3 = choiceC.value;
     var answer4 = choiceD.value;
   
-    submitError.textContent = 'Can not submit.';
+    submitError.textContent = 'answers should not the same.';
   
   
       if(qestion.length == 0 ){
@@ -126,45 +126,44 @@ if (sessionStorage.userId) {
         input0.style.border = "1px solid #00e676"
   
       }
-      if(answer1.length == 0){
-        answer1Error.textContent = 'Answer1 is required'
-        answer1Error.style.color = "#f44336";
-        input1.style.border = "1px solid #f44336"
-      }else{
+      if(answer1.length > 0 && (answer1 !== answer2 && answer1 !== answer3 && answer1 !== answer4)){
         answer1Error.textContent = 'valid'
         answer1Error.style.color = "#4caf50";
-        input1.style.border = "1px solid #00e676"
+        input4.style.border = "1px solid #00e676"
+      }else{
+        answer1Error.textContent = 'answer1 is required'
+        answer1Error.style.color = "#f44336";
+        input4.style.border = "1px solid #f44336"
   
       }
-      if(answer2.length == 0){
-        answer2Error.textContent = 'Answer2 is required'
-        answer2Error.style.color = "#f44336";
-        input2.style.border = "1px solid #f44336"
-      }else{
+      if(answer2.length > 0 && (answer2 !== answer4 && answer2 !== answer3 && answer2 !== answer1)){
         answer2Error.textContent = 'valid'
         answer2Error.style.color = "#4caf50";
-        input2.style.border = "1px solid #00e676"
+        input4.style.border = "1px solid #00e676"
+      }else{
+        answer2Error.textContent = 'answer2 is required'
+        answer2Error.style.color = "#f44336";
+        input4.style.border = "1px solid #f44336"
   
       }
-      if(answer3.length == 0){
-        answer3Error.textContent = 'Answer3 is required'
-        answer3Error.style.color = "#f44336";
-        input3.style.border = "1px solid #f44336"
-      }
-      else{
+      if(answer3.length > 0 && (answer3 !== answer2 && answer3 !== answer4 && answer3 !== answer1)){
         answer3Error.textContent = 'valid'
         answer3Error.style.color = "#4caf50";
-        input3.style.border = "1px solid #00e676"
+        input4.style.border = "1px solid #00e676"
+      }else{
+        answer3Error.textContent = 'answer3 is required'
+        answer3Error.style.color = "#f44336";
+        input4.style.border = "1px solid #f44336"
   
       }
-      if(answer4.length == 0){
-        answer4Error.textContent = 'Answer4 is required'
-        answer4Error.style.color = "#f44336";
-        input4.style.border = "1px solid #f44336"
-      }else{
+      if(answer4.length > 0 && (answer4 !== answer2 && answer4 !== answer3 && answer4 !== answer1)){
         answer4Error.textContent = 'valid'
         answer4Error.style.color = "#4caf50";
         input4.style.border = "1px solid #00e676"
+      }else{
+        answer4Error.textContent = 'Answer4 is required'
+        answer4Error.style.color = "#f44336";
+        input4.style.border = "1px solid #f44336"
   
       }
   
@@ -324,7 +323,7 @@ if (sessionStorage.userId) {
     e.preventDefault();
     
       // check form empty or not
-      if (title.value !== "" && choiceA.value !== "" && choiceB.value !== "" && choiceC.value !== "" && choiceD.value !== ""){
+      if (title.value !== "" && choiceA.value !== "" && choiceB.value !== "" && choiceC.value !== "" && choiceD.value !== "" && choiceA.value !== choiceB.value && choiceC.value !== choiceD.value && choiceA.value !== choiceD.value && choiceB.value !== choiceD.value && choiceA.value !== choiceD.value && choiceA.value !== choiceC.value){
       
         let inputTitle = title.value;
         let answer = [{choice:choiceA.value,corrected:false},{choice:choiceB.value,corrected:false},{choice:choiceC.value,corrected:false},{choice:choiceD.value,corrected:false}];

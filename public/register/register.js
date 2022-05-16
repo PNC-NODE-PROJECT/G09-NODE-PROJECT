@@ -4,7 +4,8 @@ function register(){
     let username = USER_NAME.value;
     let email = USER_EMAIL.value;
     let password = USER_PASSWORD.value;
-    if (username && password && email != ""){
+    
+    if (username.match(namePatern) && email.match(emailPatern) && password.match(passwordPatern)){
         let body = {user_name: username, email: email, password: password};
         axios.post(url,body)
         .then((result)=>{
@@ -15,6 +16,14 @@ function register(){
             }
         })
     }
+    else{
+        emailBox.className = "invalid";
+        emailText.innerHTML = "Your email address is invalid.";
+        passBox.className = "invalid";
+        passText.innerHTML = "Your password at least 6 charactors or numbers.";
+        nameBox.className = "invalid";
+        nameText.innerHTML = "Your name is invalid.";
+    }
 }
 
 
@@ -22,3 +31,44 @@ function register(){
 let USER_NAME = document.getElementById("userName");
 let USER_EMAIL = document.getElementById("email");
 let USER_PASSWORD = document.getElementById("password");
+let nameText = document.querySelector(".nameText");
+let emailText = document.querySelector(".emailText");
+let passText = document.querySelector(".passText");
+let emailBox = document.querySelector(".emailBox");
+let nameBox = document.querySelector(".nameBox");
+let passBox = document.querySelector(".passBox");
+let namePatern = /(?=.*[a-z]).{4,}/;
+let emailPatern = /[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z0-9]{3,63}$/;
+let passwordPatern = /(?=.*[0-9]+)(?=.*[a-z]).{6,}/;
+
+USER_EMAIL.addEventListener("input", ()=>{
+    if (USER_EMAIL.value.match(emailPatern)){
+        emailBox.classList.add("valid");
+        emailBox.classList.remove("invalid");
+        emailText.innerHTML = "Your email address is valid.";
+    }else{
+        emailBox.className = "invalid";
+        emailText.innerHTML = "Your email address is invalid.";
+    }
+})
+
+USER_PASSWORD.addEventListener("input", ()=>{
+   
+    if (USER_PASSWORD.value.match(passwordPatern)){
+        passBox.className = "valid";
+        passText.innerHTML = "Your password is valid.";
+    }else{
+        passBox.className = "invalid";
+        passText.innerHTML = "Your password at least 4 charactors and one number";
+    }
+})
+
+USER_NAME.addEventListener("input", ()=>{
+    if (USER_NAME.value.match(namePatern)){
+        nameBox.className = "valid";
+        nameText.innerHTML = "Your name is valid.";
+    }else{
+        nameBox.className = "invalid";
+        nameText.innerHTML = "Your name is invalid.";
+    }
+})
