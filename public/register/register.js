@@ -7,6 +7,7 @@ function register(){
     
     if (username.match(namePatern) && email.match(emailPatern) && password.match(passwordPatern)){
         let body = {user_name: username, email: email, password: password};
+        console.log(body);
         axios.post(url,body)
         .then((result)=>{
             if (result.data){
@@ -39,7 +40,7 @@ let nameBox = document.querySelector(".nameBox");
 let passBox = document.querySelector(".passBox");
 let namePatern = /(?=.*[a-z]).{4,}/;
 let emailPatern = /[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z0-9]{3,63}$/;
-let passwordPatern = /(?=.*[0-9]+)(?=.*[a-z])(?=.*[A-Z]+)(?=.*[*.!@#$%^&]).{6,32}/;
+let passwordPatern = /(?=.*[0-9]+)(?=.*[a-z])(?=.*[A-Z]+).{6,32}/;
 
 USER_EMAIL.addEventListener("input", ()=>{
     if (USER_EMAIL.value.match(emailPatern)){
