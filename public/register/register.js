@@ -20,7 +20,7 @@ function register(){
         emailBox.className = "invalid";
         emailText.innerHTML = "Your email address is invalid.";
         passBox.className = "invalid";
-        passText.innerHTML = "Your password at least 6 charactors or numbers.";
+        passText.innerHTML = "Your password at least 6 characters and symbol and number, (Exaple@123)";
         nameBox.className = "invalid";
         nameText.innerHTML = "Your name is invalid.";
     }
@@ -39,7 +39,7 @@ let nameBox = document.querySelector(".nameBox");
 let passBox = document.querySelector(".passBox");
 let namePatern = /(?=.*[a-z]).{4,}/;
 let emailPatern = /[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z0-9]{3,63}$/;
-let passwordPatern = /(?=.*[0-9]+)(?=.*[a-z]).{6,}/;
+let passwordPatern = /(?=.*[0-9]+)(?=.*[a-z])(?=.*[A-Z]+)(?=.*[*.!@#$%^&]).{6,32}/;
 
 USER_EMAIL.addEventListener("input", ()=>{
     if (USER_EMAIL.value.match(emailPatern)){
@@ -59,7 +59,7 @@ USER_PASSWORD.addEventListener("input", ()=>{
         passText.innerHTML = "Your password is valid.";
     }else{
         passBox.className = "invalid";
-        passText.innerHTML = "Your password at least 4 charactors and one number";
+        passText.innerHTML = "Your password at least 6 characters and symbol and number, (Exaple@123)";
     }
 })
 
@@ -69,6 +69,6 @@ USER_NAME.addEventListener("input", ()=>{
         nameText.innerHTML = "Your name is valid.";
     }else{
         nameBox.className = "invalid";
-        nameText.innerHTML = "Your name is invalid.";
+        nameText.innerHTML = "Your name must be at least 4 charactors.";
     }
 })
