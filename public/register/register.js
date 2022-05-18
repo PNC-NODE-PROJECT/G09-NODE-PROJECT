@@ -20,7 +20,7 @@ function register(){
         emailBox.className = "invalid";
         emailText.innerHTML = "Your email address is invalid.";
         passBox.className = "invalid";
-        passText.innerHTML = "Your password at least 6 characters and symbol and number, (Exaple@123)";
+        passText.innerHTML = "Your password is invalid";
         nameBox.className = "invalid";
         nameText.innerHTML = "Your name is invalid.";
     }
@@ -48,7 +48,7 @@ USER_EMAIL.addEventListener("input", ()=>{
         emailText.innerHTML = "Your email address is valid.";
     }else{
         emailBox.className = "invalid";
-        emailText.innerHTML = "Your email address is invalid.";
+        emailText.innerHTML = "Your email address is invalid, (exaple@gmail.com)";
     }
 })
 
