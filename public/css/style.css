@@ -466,3 +466,34 @@ ul h2 {
   right: 5px;
   z-index: 100;
 }
+
+
+.input-group-addon{
+  background: #e0e0e0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 17px 15px;
+}
+.input-group-addon:hover{
+  cursor: pointer;
+}
+.input-group-addon i {
+  color: #333;
+}
+#error{
+  border-radius: 5px;
+  background-color: #ffcdd2;
+  padding: 5px 10px;
+
+  display: none;
+}
+
+.erroeText{
+  color: #ef5350;
+  font-weight: bold;
+}
+
+#error #close:hover{
+  cursor: pointer;
+}

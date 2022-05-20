@@ -41,7 +41,7 @@ let passBox = document.querySelector(".passBox");
 let namePatern = /(?=.*[a-z]).{4,}/;
 let emailPatern = /[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z0-9]{3,63}$/;
 let passwordPatern = /(?=.*[0-9]+)(?=.*[a-z])(?=.*[A-Z]+).{6,32}/;
-
+let showPass = document.querySelector(".input-group-addon");
 USER_EMAIL.addEventListener("input", ()=>{
     if (USER_EMAIL.value.match(emailPatern)){
         emailBox.classList.add("valid");
@@ -60,7 +60,7 @@ USER_PASSWORD.addEventListener("input", ()=>{
         passText.innerHTML = "Your password is valid.";
     }else{
         passBox.className = "invalid";
-        passText.innerHTML = "Your password at least 6 characters and symbol and number, (Exaple@123)";
+        passText.innerHTML = "Your password at least 6 characters one uppercase, symbol and number, (Exaple123)";
     }
 })
 
@@ -73,3 +73,18 @@ USER_NAME.addEventListener("input", ()=>{
         nameText.innerHTML = "Your name must be at least 4 charactors.";
     }
 })
+
+showPass.addEventListener("click",showPassword);
+
+function showPassword(event){
+    if (event.target.className = "input-group-addon"){
+       if (USER_PASSWORD.type == "password"){
+           USER_PASSWORD.type = "text";
+           document.querySelector("#eye").className = "fa fa-eye";
+       }else if (USER_PASSWORD.type == "text"){
+        USER_PASSWORD.type = "password";
+        document.querySelector("#eye").className = "fa fa-eye-slash";
+       }
+    }
+}
+

@@ -19,14 +19,19 @@ function login(){
             if (isCorrect){
                 location.href = "../home/home.html";
             }else{
-                alert("Wrong email or password");
+                document.querySelector("#error").style.display = "block";
+                document.querySelector("#error").style.display = "flex";
+                document.querySelector("#error").style.justifyContent = "space-between";
+                document.querySelector("#error").style. alignItems= "center";
+                document.querySelector(".erroeText").textContent = "Wrong email or password !";
             }
         })
     }else{
-        emailBox.className = "invalid";
-        emailText.innerHTML = "Your email address is invalid.";
-        passBox.className = "invalid";
-        passText.innerHTML = "Your password is invalid";
+        document.querySelector("#error").style.display = "block";
+        document.querySelector("#error").style.display = "flex";
+        document.querySelector("#error").style.justifyContent = "space-between";
+        document.querySelector("#error").style. alignItems= "center";
+        document.querySelector(".erroeText").textContent = "Emial or password should not empty !"
     }
 
 }
@@ -41,3 +46,23 @@ let passBox = document.querySelector(".passBox");
 let emailText = document.querySelector(".emailText");
 let passText = document.querySelector(".passText");
 let emailBox = document.querySelector(".emailBox");
+let showPass = document.querySelector(".input-group-addon");
+let closeMessageBox = document.querySelector("#close");
+closeMessageBox.addEventListener("click", function(e) {
+    if (e.target.id == "close") {
+        e.target.parentElement.style.display = "none";
+    }
+})
+showPass.addEventListener("click",showPassword);
+
+function showPassword(event){
+    if (event.target.className = "input-group-addon"){
+       if (USER_PASSWORD.type == "password"){
+           USER_PASSWORD.type = "text";
+           document.querySelector("#eye").className = "fa fa-eye";
+       }else if (USER_PASSWORD.type == "text"){
+        USER_PASSWORD.type = "password";
+        document.querySelector("#eye").className = "fa fa-eye-slash";
+       }
+    }
+}
